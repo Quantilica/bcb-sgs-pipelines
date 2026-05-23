@@ -1,0 +1,11 @@
+# Pipeline: monetario
+# Agregados monetários do BCB SGS
+#
+# Séries selecionadas:
+#   27790 - M1 - saldo (R$ milhões) — mensal
+#   27791 - M2 - saldo (R$ milhões) — mensal
+#   27792 - M3 - saldo (R$ milhões) — mensal
+#   27793 - M4 - saldo (R$ milhões) — mensal
+
+[[series]]
+ids = [27790, 27791, 27792, 27793]

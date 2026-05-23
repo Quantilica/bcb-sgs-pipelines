@@ -1,0 +1,9 @@
+# Pipeline: cambio
+# Taxas de câmbio do BCB SGS
+#
+# Séries selecionadas:
+#   1    - Taxa de câmbio - Livre - Dólar americano (venda) - diária
+#   21619 - Taxa de câmbio - Livre - Euro (venda) - diária
+
+[[series]]
+ids = [1, 21619]

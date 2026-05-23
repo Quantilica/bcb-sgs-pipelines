@@ -1,0 +1,6 @@
+[[table]]
+name        = "juros"
+schema      = "analytics"
+strategy    = "replace"
+sql         = "juros.sql"
+description = "Painel de taxas de juros — SELIC meta/over, CDI e TR, uma coluna por série"

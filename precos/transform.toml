@@ -1,0 +1,6 @@
+[[table]]
+name        = "precos"
+schema      = "analytics"
+strategy    = "replace"
+sql         = "precos.sql"
+description = "Painel mensal de índices de preços — uma coluna por série, indexado por data"

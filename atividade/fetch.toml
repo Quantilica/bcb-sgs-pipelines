@@ -1,0 +1,9 @@
+# Pipeline: atividade
+# Indicadores de atividade econômica do BCB SGS
+#
+# Séries selecionadas:
+#   24363 - IBC-Br - Índice de Atividade Econômica do Banco Central (mensal,
+#            dessazonalizado, base 2002=100)
+
+[[series]]
+ids = [24363]

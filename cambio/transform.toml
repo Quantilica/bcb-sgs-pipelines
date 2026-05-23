@@ -1,0 +1,6 @@
+[[table]]
+name        = "cambio"
+schema      = "analytics"
+strategy    = "replace"
+sql         = "cambio.sql"
+description = "Painel diário de taxas de câmbio — USD/BRL e EUR/BRL, uma coluna por série"

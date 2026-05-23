@@ -1,0 +1,6 @@
+[[table]]
+name        = "atividade"
+schema      = "analytics"
+strategy    = "replace"
+sql         = "atividade.sql"
+description = "Painel mensal de indicadores de atividade econômica — IBC-Br"

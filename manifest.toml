@@ -1,0 +1,33 @@
+name        = "BCB SGS Standard Pipelines"
+description = "Pipelines de referência para o motor bcb-sgs-sql, cobrindo preços, juros, câmbio, atividade, crédito e agregados monetários."
+version     = "0.1.0"
+
+[[pipeline]]
+id          = "precos"
+description = "Índices de preços (IPCA, IPCA-15, INPC, IGP-M)"
+path        = "precos"
+
+[[pipeline]]
+id          = "juros"
+description = "Taxas de juros (SELIC meta/over, CDI, TR)"
+path        = "juros"
+
+[[pipeline]]
+id          = "cambio"
+description = "Taxas de câmbio (USD/BRL, EUR/BRL)"
+path        = "cambio"
+
+[[pipeline]]
+id          = "atividade"
+description = "Indicadores de atividade econômica (IBC-Br)"
+path        = "atividade"
+
+[[pipeline]]
+id          = "credito"
+description = "Operações de crédito (saldo total, inadimplência, spread)"
+path        = "credito"
+
+[[pipeline]]
+id          = "monetario"
+description = "Agregados monetários (M1, M2, M3, M4)"
+path        = "monetario"

@@ -1,0 +1,14 @@
+# Pipeline: juros
+# Taxas de juros do BCB SGS
+#
+# Séries selecionadas:
+#   432  - Meta para a Taxa Selic definida pelo Copom (% a.a.)
+#   11   - Taxa de juros - Selic acumulada no mês (% a.m.)
+#   12   - Taxa de juros - CDI acumulada no mês (% a.m.)
+#   226  - Taxa Referencial (TR) do período (%)
+#
+# Nota: séries 11, 12 e 226 são diárias; a tabela resultante
+# agrega por data (dia de referência).
+
+[[series]]
+ids = [432, 11, 12, 226]
