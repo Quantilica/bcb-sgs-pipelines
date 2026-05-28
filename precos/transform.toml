@@ -3,4 +3,5 @@ name        = "precos"
 schema      = "analytics"
 strategy    = "replace"
 sql         = "precos.sql"
-description = "Painel mensal de índices de preços — uma coluna por série, indexado por data"
+description = "Séries de índices de preços ao consumidor filtradas por tema"
+primary_key = ["date", "indice"]

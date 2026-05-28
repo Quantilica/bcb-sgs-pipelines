@@ -1,21 +1,22 @@
--- analytics.juros
--- Painel de taxas de juros de referência.
--- Uma coluna por série, indexado por data.
---
--- Séries:
---   432  Meta para a Taxa Selic (% a.a.) — mensal/decisão Copom
---   11   Selic acumulada no mês (% a.m.) — diária
---   12   CDI acumulada no mês (% a.m.)   — diária
---   226  Taxa Referencial - TR (%)        — diária
-
 SELECT
     sd.date,
-    MAX(CASE WHEN sd.series_id = 432 THEN sd.value END) AS selic_meta_aa,
-    MAX(CASE WHEN sd.series_id = 11  THEN sd.value END) AS selic_over_am,
-    MAX(CASE WHEN sd.series_id = 12  THEN sd.value END) AS cdi_am,
-    MAX(CASE WHEN sd.series_id = 226 THEN sd.value END) AS tr
-FROM series_data sd
-WHERE sd.series_id IN (432, 11, 12, 226)
-  AND sd.ativo = TRUE
-GROUP BY sd.date
-ORDER BY sd.date;
+    COALESCE(sd.date_end, sd.date) AS date_end,
+    CASE sd.series_id
+        WHEN 432 THEN 'SELIC-META'
+        WHEN 11 THEN 'SELIC-OVER'
+        WHEN 12 THEN 'CDI'
+        WHEN 226 THEN 'TR'
+        ELSE sm.name
+    END AS taxa,
+    sm.name AS nome_serie,
+    sm.unit AS unidade,
+    sm.frequency AS frequencia,
+    sd.value::double precision AS valor
+FROM
+    series_data sd
+    INNER JOIN series_metadata sm ON sd.series_id = sm.series_id
+WHERE
+    sm.theme_hierarchy @> ARRAY['Mercados financeiros e de capitais', 'Indicadores do mercado financeiro', 'Taxas de juros']
+    AND sd.ativo = TRUE
+ORDER BY
+    sd.date, date_end, taxa;

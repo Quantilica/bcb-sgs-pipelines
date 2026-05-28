@@ -3,4 +3,5 @@ name        = "juros"
 schema      = "analytics"
 strategy    = "replace"
 sql         = "juros.sql"
-description = "Painel de taxas de juros — SELIC meta/over, CDI e TR, uma coluna por série"
+description = "Séries de taxas de juros do mercado financeiro filtradas por tema"
+primary_key = ["date", "date_end", "taxa"]

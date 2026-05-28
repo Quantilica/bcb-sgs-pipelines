@@ -10,3 +10,8 @@
 
 [[series]]
 ids = [433, 13522, 188, 189, 7478]
+
+[[series]]
+themes = ["Preços"]
+frequency = "M"
+
