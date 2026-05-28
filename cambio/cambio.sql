@@ -1,17 +1,63 @@
 -- analytics.cambio
--- Painel diário de taxas de câmbio livre (venda).
--- Uma coluna por série, indexado por data.
---
--- Séries:
---   1     Taxa de câmbio - Livre - Dólar americano (venda) - R$/US$
---   21619 Taxa de câmbio - Livre - Euro (venda) - R$/EUR
-
+WITH joined_tables AS (
+    SELECT
+        sd.date,
+        sm.name_abbreviated,
+        sm.unit,
+        sd.value
+    FROM
+        series_data sd
+        INNER JOIN series_metadata sm ON sd.series_id = sm.series_id
+    WHERE
+        sd.series_id IN (
+            1, 10813, 21619, 21620, 21621, 21622, 21623, 21624, 21625, 21626,
+            21627, 21628, 21629, 21630, 21631, 21632, 21633, 21634, 21635, 21636
+        )
+        AND sd.ativo = TRUE
+),
+added_lado AS (
+    SELECT
+        date,
+        REPLACE(REPLACE(name_abbreviated, ' (compra)', ''), ' (venda)', '') AS moeda,
+        (
+            CASE
+                WHEN name_abbreviated ~ '.*\(compra\)$' THEN 'compra' ELSE 'venda'
+            END
+        ) AS lado,
+        unit AS unidade,
+        value AS valor
+    FROM
+        joined_tables
+),
+fin AS (
+    SELECT
+        date,
+        moeda,
+        unidade,
+        SUM(
+            CASE
+                WHEN lado = 'compra' THEN valor ELSE NULL
+            END
+        ) AS taxa_compra,
+        SUM(
+            CASE
+                WHEN lado = 'venda' THEN valor ELSE NULL
+            END
+        ) AS taxa_venda
+    FROM
+        added_lado
+    GROUP BY
+        date,
+        moeda,
+        unidade
+)
 SELECT
-    sd.date,
-    MAX(CASE WHEN sd.series_id = 1     THEN sd.value END) AS usd_brl,
-    MAX(CASE WHEN sd.series_id = 21619 THEN sd.value END) AS eur_brl
-FROM series_data sd
-WHERE sd.series_id IN (1, 21619)
-  AND sd.ativo = TRUE
-GROUP BY sd.date
-ORDER BY sd.date;
+    date,
+    moeda,
+    unidade,
+    taxa_compra,
+    taxa_venda
+FROM
+    fin
+ORDER BY
+    date, moeda;

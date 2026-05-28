@@ -29,54 +29,47 @@ bcb-sgs-sql run std monetario
 
 | Pipeline | Séries BCB SGS | Saída analítica | Frequência |
 |---|---|---|---|
-| `precos` | IPCA 433, IPCA acum 12m 13522, INPC 188, IGP-M 189, IPCA-15 7478 | `analytics.precos` | Mensal |
-| `juros` | SELIC meta 432, SELIC over 11, CDI 12, TR 226 | `analytics.juros` | Diária / mensal |
-| `cambio` | USD/BRL 1, EUR/BRL 21619 | `analytics.cambio` | Diária |
-| `atividade` | IBC-Br 24363 | `analytics.atividade` | Mensal |
+| `precos` | Índices de preços ao consumidor (Tema) | `analytics.precos` | Mensal |
+| `juros` | Taxas de juros (Tema) | `analytics.juros` | Diária / mensal |
+| `cambio` | USD, EUR, JPY, GBP, CHF, DKK, NOK, SEK, AUD, CAD (Compra/Venda) | `analytics.cambio` | Diária |
+| `atividade` | IBC-Br nacional e de 18 estados/regiões | `analytics.atividade` | Mensal |
 | `credito` | Saldo crédito 20539, inadimplência 21082, spread 20783 | `analytics.credito` | Mensal |
 | `monetario` | M1 27790, M2 27791, M3 27792, M4 27793 | `analytics.monetario` | Mensal |
+| `alcool_carburante` | Hidratado 1399, Anidro 1400, Total 1401 | `analytics.alcool_carburante` | Mensal |
+| `commodities` | IC-Br Agro 27574, Energia 27575, Metal 27577, Total 27576 | `analytics.commodities` | Mensal |
+| `derivados_petroleo` | Produção (1389-92), Consumo (1393-98) | `analytics.derivados_petroleo` | Mensal |
+| `desembolsos_bndes` | Total 7415, Setoriais 7416-19 | `analytics.desembolsos_bndes` | Mensal |
+| `energia_eletrica` | Comercial 1402, Residencial 1403, Industrial 1404, Outros 1405, Total 1406 | `analytics.energia_eletrica` | Mensal |
+| `movimento_cambio_contratado` | Tema "Movimento de câmbio contratado" | `analytics.movimento_cambio_contratado` | Diária |
+| `pib_mensal` | Nominal BRL 4380, USD 4385 | `analytics.pib_mensal` | Mensal |
 
 ## Detalhes dos pipelines
 
 ### `precos` — Índices de preços
 
-Painel mensal de índices de preços ao consumidor e ao produtor.
+Séries de índices de preços ao consumidor filtradas por tema.
 
-| Coluna | Série SGS | Descrição |
-|---|---|---|
-| `ipca_mensal` | 433 | IPCA — variação mensal (%) |
-| `ipca_acum_12m` | 13522 | IPCA — variação acumulada em 12 meses (%) |
-| `inpc_mensal` | 188 | INPC — variação mensal (%) |
-| `igpm_mensal` | 189 | IGP-M — variação mensal (%) |
-| `ipca15_mensal` | 7478 | IPCA-15 — variação mensal (%) |
+- `analytics.precos` (Long): colunas `date`, `series_id`, `valor`.
 
 ### `juros` — Taxas de juros
 
-Painel de taxas de juros de referência da economia brasileira.
+Séries de taxas de juros do mercado financeiro filtradas por tema.
 
-| Coluna | Série SGS | Descrição |
-|---|---|---|
-| `selic_meta_aa` | 432 | Meta para a Taxa Selic — % a.a. (decisão Copom) |
-| `selic_over_am` | 11 | Selic acumulada no mês — % a.m. |
-| `cdi_am` | 12 | CDI acumulada no mês — % a.m. |
-| `tr` | 226 | Taxa Referencial (TR) — % |
+- `analytics.juros` (Long): colunas `date`, `series_id`, `valor`.
 
 ### `cambio` — Taxas de câmbio
 
-Painel diário de taxas de câmbio livre (cotação de venda).
+Taxas diárias de compra e venda de 10 moedas estrangeiras principais.
 
-| Coluna | Série SGS | Descrição |
-|---|---|---|
-| `usd_brl` | 1 | Taxa de câmbio USD/BRL — R$/US$ |
-| `eur_brl` | 21619 | Taxa de câmbio EUR/BRL — R$/EUR |
+- `analytics.cambio` (Long): colunas `date`, `moeda`, `unidade`, `taxa_compra`, `taxa_venda`.
 
 ### `atividade` — Atividade econômica
 
-Painel mensal do indicador antecipado de atividade econômica do BCB.
+Índices de atividade econômica (IBC-Br) nacional e de 18 estados/regiões, com ajuste e sem ajuste sazonal.
 
-| Coluna | Série SGS | Descrição |
-|---|---|---|
-| `ibc_br` | 24363 | IBC-Br dessazonalizado — base 2002=100 |
+- `analytics.atividade` (Long): colunas `date`, `localidade_id`, `nivel_territorial`, `unidade_territorial`, `tipo_indice`, `valor`.
+
+
 
 ### `credito` — Operações de crédito
 

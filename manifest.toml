@@ -31,3 +31,39 @@ path        = "credito"
 id          = "monetario"
 description = "Agregados monetários (M1, M2, M3, M4)"
 path        = "monetario"
+
+[[pipeline]]
+id          = "alcool_carburante"
+description = "Consumo de álcool carburante (hidratado, anidro, total)"
+path        = "alcool_carburante"
+
+[[pipeline]]
+id          = "commodities"
+description = "Índices de Commodities (IC-Br)"
+path        = "commodities"
+
+[[pipeline]]
+id          = "derivados_petroleo"
+description = "Produção e consumo de derivados de petróleo"
+path        = "derivados_petroleo"
+
+[[pipeline]]
+id          = "desembolsos_bndes"
+description = "Desembolsos do BNDES por setor"
+path        = "desembolsos_bndes"
+
+[[pipeline]]
+id          = "energia_eletrica"
+description = "Consumo de energia elétrica por setor"
+path        = "energia_eletrica"
+
+[[pipeline]]
+id          = "movimento_cambio_contratado"
+description = "Movimento de câmbio contratado"
+path        = "movimento_cambio_contratado"
+
+[[pipeline]]
+id          = "pib_mensal"
+description = "PIB mensal acumulado em 12 meses (BRL e USD)"
+path        = "pib_mensal"
+

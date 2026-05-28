@@ -2,10 +2,10 @@
 # Agregados monetários do BCB SGS
 #
 # Séries selecionadas:
-#   27790 - M1 - saldo (R$ milhões) — mensal
-#   27791 - M2 - saldo (R$ milhões) — mensal
-#   27792 - M3 - saldo (R$ milhões) — mensal
-#   27793 - M4 - saldo (R$ milhões) — mensal
+#   27791 - Meios de pagamento - M1 (saldo em final de período) - Novo
+#   27810 - Meios de pagamento amplos - M2 (saldo em final de período) - Novo
+#   27813 - Meios de pagamento amplos - M3 (saldo em final de período) - Novo
+#   27815 - Meios de pagamento amplos - M4 (saldo em final de periodo) - Novo
 
 [[series]]
-ids = [27790, 27791, 27792, 27793]
+ids = [27791, 27810, 27813, 27815]
