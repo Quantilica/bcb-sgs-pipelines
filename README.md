@@ -108,6 +108,9 @@ bcb-sgs-sql plugin update --alias std
 
 ## Estrutura do repositório
 
+Cada pipeline é um diretório com o mesmo trio de arquivos
+(`fetch.toml` + `transform.toml` + `<id>.sql`):
+
 ```
 bcb-sgs-pipelines/
 ├── manifest.toml         # registro de todos os pipelines
@@ -118,27 +121,21 @@ bcb-sgs-pipelines/
 │   ├── fetch.toml
 │   ├── transform.toml
 │   └── precos.sql
-├── juros/
-│   ├── fetch.toml
-│   ├── transform.toml
-│   └── juros.sql
-├── cambio/
-│   ├── fetch.toml
-│   ├── transform.toml
-│   └── cambio.sql
-├── atividade/
-│   ├── fetch.toml
-│   ├── transform.toml
-│   └── atividade.sql
-├── credito/
-│   ├── fetch.toml
-│   ├── transform.toml
-│   └── credito.sql
-└── monetario/
-    ├── fetch.toml
-    ├── transform.toml
-    └── monetario.sql
+├── juros/                         (fetch.toml + transform.toml + juros.sql)
+├── cambio/                        (…)
+├── atividade/                     (…)
+├── credito/                       (…)
+├── monetario/                     (…)
+├── alcool_carburante/            (…)
+├── commodities/                   (…)
+├── derivados_petroleo/            (…)
+├── desembolsos_bndes/             (…)
+├── energia_eletrica/              (…)
+├── movimento_cambio_contratado/   (…)
+└── pib_mensal/                    (…)
 ```
+
+São **13 pipelines** no total (ver `manifest.toml`).
 
 ## Licença
 
