@@ -1,5 +1,16 @@
 # bcb-sgs-pipelines
 
+> [!WARNING]
+> **REPOSITÓRIO DEPRECIADO / DEPRECATED**  
+> O catálogo `bcb-sgs-pipelines` foi descontinuado e consolidado no catálogo declarativo unificado [**`quantilica-pipelines`**](https://github.com/Quantilica/quantilica-pipelines).  
+> Todas as 13 pipelines foram migradas e são executadas através do motor unificado [**`quantilica-sql`**](https://github.com/Quantilica/quantilica-sql).  
+> Para instalar e utilizar o novo catálogo unificado:
+> ```bash
+> quantilica-sql plugin install https://github.com/Quantilica/quantilica-pipelines.git --alias std
+> quantilica-sql run std <pipeline>
+> ```
+
+
 Catálogo de pipelines ETL de referência para o motor
 [`bcb-sgs-sql`](https://github.com/Quantilica/bcb-sgs-sql), cobrindo os
 principais indicadores macroeconômicos do Banco Central do Brasil (BCB SGS).
